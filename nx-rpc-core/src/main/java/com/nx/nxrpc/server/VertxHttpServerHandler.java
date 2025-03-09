@@ -1,9 +1,12 @@
 package com.nx.nxrpc.server;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import com.nx.nxrpc.model.RpcRequest;
 import com.nx.nxrpc.model.RpcResponse;
+import com.nx.nxrpc.registry.LocalRegistry;
 import com.nx.nxrpc.serializer.JdkSerializer;
 import com.nx.nxrpc.serializer.Serializer;
 import io.vertx.core.Handler;
@@ -33,8 +36,23 @@ public class VertxHttpServerHandler implements Handler<HttpServerRequest> {
             RpcResponse rpcResponse = new RpcResponse();
             if (rpcRequest == null) {
                 rpcResponse.setMessage("rpcRequest is null");
+                doResponse(request, rpcResponse);
                 return;
             }
+            try {
+                Class<?> implClass = LocalRegistry.get(rpcRequest.getServiceName());
+                Method method = implClass.getMethod(rpcRequest.getMethodName(), rpcRequest.getParameterTypes());
+                Object result = method.invoke(implClass.getDeclaredConstructor().newInstance(), rpcRequest.getArgs());
+                rpcResponse.setDataType(method.getReturnType());
+                rpcResponse.setData(result);
+                rpcResponse.setMessage("ok");
+            } catch (NoSuchMethodException | IllegalAccessException | InstantiationException |
+                     InvocationTargetException e) {
+                e.printStackTrace();
+                rpcResponse.setMessage(e.getMessage());
+                rpcResponse.setException(e);
+            }
+            doResponse(request, rpcResponse);
         });
     }
 

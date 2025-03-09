@@ -29,6 +29,12 @@
             <version>1.18.36</version>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-http -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-http</artifactId>
+            <version>5.8.36</version>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
