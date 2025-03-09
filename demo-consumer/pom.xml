@@ -6,7 +6,19 @@
 
     <groupId>com.nx.nxrpc</groupId>
     <artifactId>demo-consumer</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.nx.nxrpc</groupId>
+            <artifactId>demo-common</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.nx.nxrpc</groupId>
+            <artifactId>nx-rpc-core</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
