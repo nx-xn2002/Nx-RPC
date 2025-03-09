@@ -5,18 +5,20 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/nx-rpc-lite/pom.xml" />
+        <option value="$PROJECT_DIR$/nx-rpc-lite-test/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-common/pom.xml" />
+        <option value="$PROJECT_DIR$/nx-rpc-core/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-consumer/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/nx-rpc-lite/pom.xml" />
+        <option value="$PROJECT_DIR$/nx-rpc-lite-test/pom.xml" />
       </set>
     </option>
   </component>
-  <component name="MavenRunner">
-    <option name="jreName" value="19" />
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="20" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

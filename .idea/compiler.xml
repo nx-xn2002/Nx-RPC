@@ -6,10 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="demo-common" />
+        <module name="nx-rpc-core" />
+        <module name="demo-provider" />
+        <module name="demo-consumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="19">
-      <module name="nx-rpc-lite" target="23" />
+      <module name="nx-rpc-lite-test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

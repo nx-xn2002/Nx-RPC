@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/nx-rpc.iml" filepath="$PROJECT_DIR$/.idea/nx-rpc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/nx-rpc-lite.iml" filepath="$PROJECT_DIR$/nx-rpc-lite.iml" />
     </modules>
   </component>
 </project>
