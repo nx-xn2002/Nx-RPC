@@ -11,6 +11,7 @@ import com.nx.nxrpc.proxy.ServiceProxyFactory;
  */
 public class EasyConsumerDemo {
     public static void main(String[] args) {
+        //UserService userService = ServiceProxyFactory.getMockProxy(UserService.class);
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
         User user = new User();
         user.setUsername("nx");
@@ -20,5 +21,6 @@ public class EasyConsumerDemo {
         } else {
             System.out.println("newUser == null");
         }
+        System.out.println(userService.getUserEmail(user));
     }
 }

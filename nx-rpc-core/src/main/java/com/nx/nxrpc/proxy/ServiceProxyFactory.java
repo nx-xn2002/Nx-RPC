@@ -36,4 +36,14 @@ public class ServiceProxyFactory {
     public static <T> T getProxy(Class<T> serviceClass) {
         return getProxy(serviceClass, new JdkServiceProxy());
     }
+
+    /**
+     * get mock proxy
+     *
+     * @param serviceClass service class
+     * @return {@link T }
+     */
+    public static <T> T getMockProxy(Class<T> serviceClass) {
+        return getProxy(serviceClass, new MockServiceProxy());
+    }
 }

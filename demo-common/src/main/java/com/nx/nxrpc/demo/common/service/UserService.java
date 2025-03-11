@@ -15,4 +15,12 @@ public interface UserService {
      * @return {@link User }
      */
     User getUser(User user);
+
+    /**
+     * get user email
+     *
+     * @param user user
+     * @return {@link String }
+     */
+    String getUserEmail(User user);
 }

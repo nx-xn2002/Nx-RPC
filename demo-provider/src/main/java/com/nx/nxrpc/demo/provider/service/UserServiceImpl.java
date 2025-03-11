@@ -15,4 +15,9 @@ public class UserServiceImpl implements UserService {
         user.setUsername(user.getUsername() + "[from provider]");
         return user;
     }
+
+    @Override
+    public String getUserEmail(User user) {
+        return user.getUsername() + "@xx.com";
+    }
 }
