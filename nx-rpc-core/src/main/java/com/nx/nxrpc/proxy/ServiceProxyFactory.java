@@ -13,7 +13,7 @@ public class ServiceProxyFactory {
      * get proxy
      *
      * @param serviceClass service class
-     * @param handler      supported handler {@link JdkServiceProxy}
+     * @param handler      supported handler {@link ServiceProxy}
      * @return {@link T }
      */
     public static <T> T getProxy(Class<T> serviceClass, InvocationHandler handler) {
@@ -28,13 +28,13 @@ public class ServiceProxyFactory {
 
     /**
      * get proxy
-     * default supported handler {@link JdkServiceProxy}
+     * default supported handler {@link ServiceProxy}
      *
      * @param serviceClass service class
      * @return {@link T }
      */
     public static <T> T getProxy(Class<T> serviceClass) {
-        return getProxy(serviceClass, new JdkServiceProxy());
+        return getProxy(serviceClass, new ServiceProxy());
     }
 
     /**

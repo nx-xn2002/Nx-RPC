@@ -10,20 +10,20 @@ import com.nx.nxrpc.RpcApplication;
 import com.nx.nxrpc.config.RpcConfig;
 import com.nx.nxrpc.model.RpcRequest;
 import com.nx.nxrpc.model.RpcResponse;
-import com.nx.nxrpc.serializer.JdkSerializer;
 import com.nx.nxrpc.serializer.Serializer;
+import com.nx.nxrpc.serializer.SerializerFactory;
 
 /**
  * jdk service proxy
  *
  * @author nx-xn2002
  */
-public class JdkServiceProxy implements InvocationHandler {
+public class ServiceProxy implements InvocationHandler {
     static RpcConfig config = RpcApplication.getRpcConfig();
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        Serializer serializer = new JdkSerializer();
+        Serializer serializer = SerializerFactory.getInstance(config.getSerializer());
         RpcRequest rpcRequest = RpcRequest.builder()
             .serviceName(method.getDeclaringClass().getName())
             .methodName(method.getName())

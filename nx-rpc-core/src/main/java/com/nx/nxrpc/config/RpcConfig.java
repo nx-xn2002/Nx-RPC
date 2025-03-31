@@ -1,5 +1,6 @@
 package com.nx.nxrpc.config;
 
+import com.nx.nxrpc.serializer.SerializerKeys;
 import lombok.Data;
 
 /**
@@ -32,4 +33,8 @@ public class RpcConfig {
      * mock
      */
     private boolean mock = false;
+    /**
+     * serializer
+     */
+    private String serializer = SerializerKeys.JDK;
 }

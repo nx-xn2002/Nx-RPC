@@ -1,0 +1,4 @@
+jdk=com.nx.nxrpc.serializer.JdkSerializer
+hession=com.nx.nxrpc.serializer.HessianSerializer
+json=com.nx.nxrpc.serializer.JsonSerializer
+kryo=com.nx.nxrpc.serializer.KryoSerializer

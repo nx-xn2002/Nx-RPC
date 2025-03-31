@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import com.nx.nxrpc.RpcApplication;
 import com.nx.nxrpc.model.RpcRequest;
 import com.nx.nxrpc.model.RpcResponse;
 import com.nx.nxrpc.registry.LocalRegistry;
 import com.nx.nxrpc.serializer.JdkSerializer;
 import com.nx.nxrpc.serializer.Serializer;
+import com.nx.nxrpc.serializer.SerializerFactory;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
@@ -20,7 +22,7 @@ import io.vertx.core.http.HttpServerResponse;
  * @author nx-xn2002
  */
 public class VertxHttpServerHandler implements Handler<HttpServerRequest> {
-    private final Serializer serializer = new JdkSerializer();
+    private final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
     @Override
     public void handle(HttpServerRequest request) {
