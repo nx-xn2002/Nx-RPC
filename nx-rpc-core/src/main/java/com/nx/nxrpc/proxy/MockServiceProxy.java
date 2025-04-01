@@ -5,13 +5,16 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * mock service proxy(jdk service proxy)
  *
  * @author nx-xn2002
  */
+@Slf4j
 public class MockServiceProxy implements InvocationHandler {
-    private Map<Class<?>, Object> mockMap = new HashMap<>();
+    private final Map<Class<?>, Object> mockMap = new HashMap<>();
 
     public MockServiceProxy() {
         initMockMap();
@@ -48,7 +51,7 @@ public class MockServiceProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) {
         Class<?> methodReturnType = method.getReturnType();
-        System.out.println("mock invoke " + method.getName());
+        log.info("mock invoke {}", method.getName());
         return mockMap.getOrDefault(methodReturnType, null);
     }
 }

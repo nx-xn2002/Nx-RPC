@@ -18,6 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author nx-xn2002
  */
+@Slf4j
 public class SpiLoader {
 
     /**
@@ -54,7 +55,7 @@ public class SpiLoader {
      * load all
      */
     public static void loadAll() {
-        System.out.println("加载所有 SPI");
+        log.info("加载所有 SPI");
         for (Class<?> aClass : LOAD_CLASS_LIST) {
             load(aClass);
         }
@@ -98,7 +99,7 @@ public class SpiLoader {
      * @param loadClass load class
      */
     public static void load(Class<?> loadClass) {
-        System.out.printf("加载类型为 %s 的 SPI%n", loadClass.getName());
+        log.info("加载类型为 {} 的 SPI", loadClass.getName());
         // scan paths
         Map<String, Class<?>> keyClassMap = new HashMap<>(16);
         for (String scanDir : SCAN_DIRS) {
@@ -118,7 +119,7 @@ public class SpiLoader {
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println("spi resource load error" + e);
+                    log.error("spi resource load error", e);
                 }
             }
         }

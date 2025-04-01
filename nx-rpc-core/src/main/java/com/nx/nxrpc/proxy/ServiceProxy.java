@@ -12,12 +12,14 @@ import com.nx.nxrpc.model.RpcRequest;
 import com.nx.nxrpc.model.RpcResponse;
 import com.nx.nxrpc.serializer.Serializer;
 import com.nx.nxrpc.serializer.SerializerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * jdk service proxy
  *
  * @author nx-xn2002
  */
+@Slf4j
 public class ServiceProxy implements InvocationHandler {
     static RpcConfig config = RpcApplication.getRpcConfig();
 
@@ -39,7 +41,7 @@ public class ServiceProxy implements InvocationHandler {
                 return rpcResponse.getData();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("service invoke failed", e);
         }
         return null;
     }

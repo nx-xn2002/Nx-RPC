@@ -15,25 +15,27 @@ import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * http server handler
  *
  * @author nx-xn2002
  */
+@Slf4j
 public class VertxHttpServerHandler implements Handler<HttpServerRequest> {
     private final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
     @Override
     public void handle(HttpServerRequest request) {
-        System.out.println("Received request: " + request.method() + " " + request.uri());
+        log.info("Received request: {} {}", request.method(), request.uri());
         request.bodyHandler(body -> {
             byte[] bytes = body.getBytes();
             RpcRequest rpcRequest = null;
             try {
                 rpcRequest = serializer.deserialize(bytes, RpcRequest.class);
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("deserialize failed", e);
             }
             RpcResponse rpcResponse = new RpcResponse();
             if (rpcRequest == null) {
@@ -65,7 +67,7 @@ public class VertxHttpServerHandler implements Handler<HttpServerRequest> {
             byte[] serialized = serializer.serialize(rpcResponse);
             response.end(Buffer.buffer(serialized));
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("response failed", e);
             response.end(Buffer.buffer());
         }
     }

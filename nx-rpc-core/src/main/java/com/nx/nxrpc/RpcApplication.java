@@ -3,12 +3,14 @@ package com.nx.nxrpc;
 import com.nx.nxrpc.config.RpcConfig;
 import com.nx.nxrpc.constant.RpcConstant;
 import com.nx.nxrpc.utils.ConfigUtils;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * rpc application
  *
  * @author nx-xn2002
  */
+@Slf4j
 public class RpcApplication {
 
     private static volatile RpcConfig rpcConfig;
@@ -20,7 +22,7 @@ public class RpcApplication {
      */
     public static void init(RpcConfig newRpcConfig) {
         rpcConfig = newRpcConfig;
-        System.out.println("rpc init, config = " + newRpcConfig.toString());
+        log.info("rpc init, config = {}", newRpcConfig.toString());
     }
 
     /**
