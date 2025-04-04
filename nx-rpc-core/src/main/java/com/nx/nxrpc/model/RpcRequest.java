@@ -2,6 +2,7 @@ package com.nx.nxrpc.model;
 
 import java.io.Serializable;
 
+import com.nx.nxrpc.constant.RpcConstant;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -37,5 +38,8 @@ public class RpcRequest implements Serializable {
      * args
      */
     private Object[] args;
-
+    /**
+     * service version
+     */
+    private String serviceVersion = RpcConstant.DEFAULT_SERVICE_VERSION;
 }
