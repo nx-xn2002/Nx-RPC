@@ -1,6 +1,7 @@
 package com.nx.nxrpc.registry;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import com.nx.nxrpc.config.RegistryConfig;
 import com.nx.nxrpc.model.ServiceMetaInfo;
@@ -23,9 +24,10 @@ public interface Registry {
      * register
      *
      * @param serviceMetaInfo service meta info
-     * @throws Exception exception
+     * @throws ExecutionException execution exception
+     * @throws InterruptedException interrupted exception
      */
-    void register(ServiceMetaInfo serviceMetaInfo) throws Exception;
+    void register(ServiceMetaInfo serviceMetaInfo) throws ExecutionException, InterruptedException;
 
     /**
      * un register
@@ -46,4 +48,9 @@ public interface Registry {
      * destroy
      */
     void destroy();
+
+    /**
+     * heart beat
+     */
+    void heartBeat();
 }

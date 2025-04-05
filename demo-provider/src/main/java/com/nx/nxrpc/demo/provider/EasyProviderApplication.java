@@ -23,7 +23,7 @@ public class EasyProviderApplication {
     public static void main(String[] args) {
         RpcConfig config = RpcApplication.getRpcConfig();
         RegistryConfig registryConfig = config.getRegistryConfig();
-        RpcApplication.init();
+        //RpcApplication.init(config);
         LocalRegistry.register(UserService.class.getName(), UserServiceImpl.class);
         Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
         ServiceMetaInfo serviceMetaInfo = ServiceMetaInfo.builder().serviceName(UserService.class.getName())
